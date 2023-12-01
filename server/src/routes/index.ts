@@ -6,9 +6,9 @@ import postRoute from "./postRoute";
 
 const router = Router();
 
-router.use(authRoute);
-router.use(userRoute);
-router.use(postRoute);
+router.use("/auth", authRoute);
+router.use("/user", userRoute);
+router.use("/post", postRoute);
 
 router.use("*", (request: Request, response: Response) => {
   response
