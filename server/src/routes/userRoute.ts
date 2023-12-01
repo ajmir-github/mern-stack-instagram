@@ -1,5 +1,8 @@
-import { Router, Request, Response } from "express";
+import Express from "express";
+import { getSomeUsers } from "@/controllers/userConroller";
 
-const userRoute = Router();
+const userRoute = Express.Router();
+
+userRoute.get("/", getSomeUsers);
 
 export default userRoute;

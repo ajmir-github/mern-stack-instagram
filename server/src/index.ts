@@ -2,7 +2,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 // imports
-import express, { Request, Response, NextFunction } from "express";
+import Express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import path from "path";
 import mongoose from "mongoose";
@@ -17,22 +17,22 @@ const DATABASE_URL = process.env.MONGODB_URL;
 if (!DATABASE_URL) throw new Error("Define DATABASE_URL in .env!");
 
 // app configuration
-const app = express();
+const app = Express();
 app.use(
   cors({
     origin: CLIENT_URL,
-    Credential: true,
+    credentials: true,
   })
 );
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(Express.static(path.join(__dirname, "public")));
+app.use(Express.json());
+app.use(Express.urlencoded({ extended: false }));
 
 // router
 app.use("/api", router);
 
 // not found
-app.use("*", (request: Request, response: Response) => {
+app.use("*", (request, response) => {
   response.status(StatusCodes.Ok).send("File/Path not found!");
 });
 
