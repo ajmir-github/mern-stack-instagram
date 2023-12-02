@@ -6,6 +6,8 @@ const UserSchema = new Schema<UserType>({
   fullName: String,
   email: String,
   password: String,
+  bio: String,
+  image: String,
 });
 
 const UserModel = model(Collections.User, UserSchema);

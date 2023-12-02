@@ -8,7 +8,7 @@ const getAuth = async () => {
   await new Promise((response) => {
     setTimeout(() => {
       response(null);
-    }, 2000);
+    }, 0);
   });
   return null;
   return {

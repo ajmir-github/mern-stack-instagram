@@ -1,14 +1,11 @@
 import { z } from "zod";
 
-export interface UserType {
-  fullName: string;
-  email: string;
-  password: string;
-  bio?: string;
-  image?: string;
+export interface PostType {
+  type: "TEXT" | "IMAGE" | "IMAGES" | "VIDEO";
+  description?: string;
 }
 
-export const UserValidator = z.object({
+export const PostValidator = z.object({
   fullName: z.string().min(3),
   email: z.string().email(),
   password: z.string().min(6),
