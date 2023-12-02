@@ -1,10 +1,45 @@
 function AddTextPost() {
   return (
-    <div>
+    <div className="grid gap-4">
       <textarea
         className="textarea textarea-bordered w-full h-auto textarea-lg"
         placeholder="Type here!"
       ></textarea>
+      <button className="btn btn-primary w-full">Post</button>
+    </div>
+  );
+}
+
+function AddImagePost() {
+  return (
+    <div className="grid gap-4">
+      <input
+        type="file"
+        className="file-input file-input-bordered w-full"
+        multiple
+        accept="image/*"
+      />
+      <textarea
+        className="textarea textarea-bordered w-full h-auto textarea-lg"
+        placeholder="Desription here!"
+      ></textarea>
+      <button className="btn btn-primary w-full">Upload and Post</button>
+    </div>
+  );
+}
+function AddVideoPost() {
+  return (
+    <div className="grid gap-4">
+      <input
+        type="file"
+        className="file-input file-input-bordered w-full"
+        accept="video/*"
+      />
+      <textarea
+        className="textarea textarea-bordered w-full h-auto textarea-lg"
+        placeholder="Desription here!"
+      ></textarea>
+      <button className="btn btn-primary w-full">Upload and Post</button>
     </div>
   );
 }
@@ -19,7 +54,6 @@ export default function AddRoute() {
           role="tab"
           className="tab"
           aria-label="Text"
-          checked
         />
         <div
           role="tabpanel"
@@ -34,12 +68,13 @@ export default function AddRoute() {
           role="tab"
           className="tab"
           aria-label="Image"
+          checked
         />
         <div
           role="tabpanel"
           className="tab-content  border-base-300 rounded-box p-4 md:p-8"
         >
-          Image/s
+          <AddImagePost />
         </div>
 
         <input
@@ -53,7 +88,7 @@ export default function AddRoute() {
           role="tabpanel"
           className="tab-content  border-base-300 rounded-box p-4 md:p-8"
         >
-          Video
+          <AddVideoPost />
         </div>
       </div>
     </div>
