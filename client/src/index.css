@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CodePen Home Webkit scrollbars */
+/* https://codepen.io/tholman/pen/DgOpWz */
+
+::-webkit-scrollbar-track {
+  background-color: rgba(128, 128, 128, 0.2);
+  border-radius: 10px;
+  margin: 1rem 0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+
+  background-color: rgba(128, 128, 128, 0.6);
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(128, 128, 128, 0.8);
+}
