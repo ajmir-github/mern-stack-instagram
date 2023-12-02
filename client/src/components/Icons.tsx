@@ -13,11 +13,12 @@ import { CgDarkMode } from "react-icons/cg";
 import { PiSignOut } from "react-icons/pi";
 import { PiSignIn } from "react-icons/pi";
 import { FaEdit } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa6";
 
 const wrap =
   (Icon: IconType) =>
-  ({ size }: { size?: number }) =>
-    <Icon size={size || 22} />;
+  ({ size, className }: { size?: number; className?: string }) =>
+    <Icon size={size || 22} className={className} />;
 
 export const HomeIcon = wrap(CgHome);
 export const SearchIcon = wrap(IoSearch);
@@ -33,3 +34,4 @@ export const ThemeIcon = wrap(CgDarkMode);
 export const SignOutIcon = wrap(PiSignOut);
 export const SignInIcon = wrap(PiSignIn);
 export const EditIcon = wrap(FaEdit);
+export const AppIcon = wrap(FaInstagram);
