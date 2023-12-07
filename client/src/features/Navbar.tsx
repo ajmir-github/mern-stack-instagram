@@ -1,14 +1,14 @@
-import {
-  AvatarIcon,
-  HomeIcon,
-  PlusIcon,
-  SearchIcon,
-  SettingsIcon,
-} from "@/components/Icons";
 import { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import {
+  HomeIcon,
+  SearchIcon,
+  SettingsIcon,
+  UserIcon,
+  PlusSquareIcon,
+} from "lucide-react";
 
 function LinkButton({
   href,
@@ -23,7 +23,7 @@ function LinkButton({
     <NavLink to={href}>
       {(state) => (
         <Button
-          variant={state.isActive ? "outline" : "ghost"}
+          variant={state.isActive ? "secondary" : "ghost"}
           className="gap-2 w-full justify-start"
         >
           {icon} <span className="hidden md:block">{label}</span>
@@ -40,10 +40,10 @@ export default function Navbar() {
       <LinkButton href="/search" icon={<SearchIcon />} label="Search" />
       <Separator />
 
-      <LinkButton href="/profile" icon={<AvatarIcon />} label="Profile" />
+      <LinkButton href="/profile" icon={<UserIcon />} label="Profile" />
       <LinkButton href="/settings" icon={<SettingsIcon />} label="Settings" />
       <Separator />
-      <LinkButton href="/add" icon={<PlusIcon />} label="Post" />
+      <LinkButton href="/add" icon={<PlusSquareIcon />} label="Post" />
     </div>
   );
 }
