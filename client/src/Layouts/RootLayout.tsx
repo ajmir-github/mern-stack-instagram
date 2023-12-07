@@ -10,7 +10,7 @@ const getAuth = async () => {
       response(null);
     }, 0);
   });
-  return null;
+  // return null;
   return {
     id: "sdasd",
     fullName: "Ajmir Raziqi",
@@ -45,7 +45,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <i className="opacity-50">Loading..</i>
         </div>
       ) : (
-        <div className="flex flex-col grow w-full max-w-screen-md mb-20">
+        <div className="flex flex-col grow w-full max-w-screen-md">
           {children}
         </div>
       )}

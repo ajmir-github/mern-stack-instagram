@@ -7,44 +7,43 @@ import {
 } from "@/components/Icons";
 import { ReactNode } from "react";
 import { NavLink } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
-function LinkButton({ href, children }: { href: string; children: ReactNode }) {
+function LinkButton({
+  href,
+  icon,
+  label,
+}: {
+  href: string;
+  icon: ReactNode;
+  label: string;
+}) {
   return (
-    <NavLink
-      to={href}
-      className={({ isActive, isPending }) =>
-        isPending
-          ? "btn join-item grow btn-square btn-disabled"
-          : isActive
-          ? "btn join-item grow btn-square btn-primary"
-          : "btn join-item grow btn-square btn-ghost"
-      }
-    >
-      {children}
+    <NavLink to={href}>
+      {(state) => (
+        <Button
+          variant={state.isActive ? "outline" : "ghost"}
+          className="gap-2 w-full justify-start"
+        >
+          {icon} <span className="hidden md:block">{label}</span>
+        </Button>
+      )}
     </NavLink>
   );
 }
 
 export default function Navbar() {
   return (
-    <div className="flex justify-center fixed bottom-0 left-0 w-full bg-base-100 p-2 md:p-4">
-      <div className="max-w-screen-md flex  w-full join">
-        <LinkButton href="/">
-          <HomeIcon />
-        </LinkButton>
-        <LinkButton href="/search">
-          <SearchIcon />
-        </LinkButton>
-        <LinkButton href="/add">
-          <PlusIcon />
-        </LinkButton>
-        <LinkButton href="/settings">
-          <SettingsIcon />
-        </LinkButton>
-        <LinkButton href="/profile">
-          <AvatarIcon />
-        </LinkButton>
-      </div>
+    <div className="flex flex-col gap-2">
+      <LinkButton href="/" icon={<HomeIcon />} label="Home" />
+      <LinkButton href="/search" icon={<SearchIcon />} label="Search" />
+      <Separator />
+
+      <LinkButton href="/profile" icon={<AvatarIcon />} label="Profile" />
+      <LinkButton href="/settings" icon={<SettingsIcon />} label="Settings" />
+      <Separator />
+      <LinkButton href="/add" icon={<PlusIcon />} label="Post" />
     </div>
   );
 }

@@ -6,12 +6,12 @@ import AppLayout from "./Layouts/AppLayout";
 import ProtectedRoute from "./features/ProtectedRoute";
 import UnProtectedRoute from "./features/UnProtectedRoute";
 // routes
-import RootRoute from "./routes/RootRoute";
-import AddRoute from "./routes/AddRoute";
-import SearchRoute from "./routes/SearchRoute";
-import SettingsRoute from "./routes/SettingsRoute";
-import ProfileRoute from "./routes/ProfileRoute";
-import RegisterRoute from "./routes/RegisterRoute";
+import RootRoute from "./pages/RootRoute";
+import AddRoute from "./pages/AddRoute";
+import SearchRoute from "./pages/SearchRoute";
+import SettingsRoute from "./pages/SettingsRoute";
+import ProfileRoute from "./pages/ProfileRoute";
+import RegisterRoute from "./pages/RegisterRoute";
 
 export default function App() {
   return (
