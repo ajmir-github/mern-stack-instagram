@@ -2,6 +2,7 @@ import { CommentIcon } from "@/components/Icons";
 import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import dayjs from "dayjs";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,9 +19,10 @@ import {
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Link } from "react-router-dom";
-import { HeartIcon, MoreVerticalIcon } from "lucide-react";
+import { HeartIcon, MoreVerticalIcon, SendIcon } from "lucide-react";
 import { Collapsible, CollapsibleContent } from "@/components/ui/collapsible";
 import { Textarea } from "@/components/ui/textarea";
+import { cn } from "@/lib/utils";
 
 function generatePosts() {
   let array = [];
@@ -30,23 +32,57 @@ function generatePosts() {
   return array;
 }
 
+function UserProfileLink({
+  fullName,
+  id,
+  date,
+  image,
+  className,
+}: {
+  fullName: string;
+  id: string;
+  date: Date;
+  image?: string;
+  className?: string;
+}) {
+  return (
+    <Link
+      className={cn(
+        "flex gap-2 md:gap-4 items-center w-full rounded-l-full rounded-r-md hover:bg-gray-500/20 transition-colors duration-200",
+        className
+      )}
+      to={`/profile/${id}`}
+    >
+      <Avatar className="w-12 h-12">
+        <AvatarImage src={image} alt={fullName} />
+        <AvatarFallback>{fullName.slice(0, 2).toUpperCase()}</AvatarFallback>
+      </Avatar>
+      <div>
+        <div className="opacity-70 text-sm font-bold">{fullName}</div>
+        <div className="opacity-70 text-sm">
+          {dayjs(date).format("D MMM YYYY")}
+        </div>
+      </div>
+    </Link>
+  );
+}
+
 function PostCard() {
-  const [commmentSection, setCommentSection] = useState(true);
+  const [commmentSection, setCommentSection] = useState(false);
+  const [liked, setLiked] = useState(false);
+  const handleLike = () => {
+    setLiked(!liked);
+  };
   return (
     <Card>
       <CardHeader>
         <div className="flex justify-between gap-2 md:gap-4 items-center">
-          <Link className="flex gap-2 md:gap-4 items-center " to="/profile/sdf">
-            <Avatar className="w-12 h-12">
-              <AvatarImage src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-
-            <div className="grid">
-              <h4 className="text-sm font-bold">John Doe</h4>
-              <div className="text-sm">27 Dec, 2022</div>
-            </div>
-          </Link>
+          <UserProfileLink
+            id="asd"
+            date={new Date()}
+            fullName="Ajmir Raziqi"
+            image="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+          />
 
           <DropdownMenu>
             <DropdownMenuTrigger>
@@ -85,10 +121,14 @@ function PostCard() {
       </CardContent>
 
       <CardFooter className="flex p-2 gap-2">
-        <Button variant={"ghost"} className="join-item grow gap-2">
+        <Button
+          variant={liked ? "default" : "ghost"}
+          className="join-item grow gap-2"
+          onClick={handleLike}
+        >
           <HeartIcon />
           <Separator orientation="vertical" />
-          <span className="text-xs opacity-50">24 links</span>
+          <span className="text-xs opacity-70">24 links</span>
         </Button>
         <Button
           variant={commmentSection ? "default" : "ghost"}
@@ -97,41 +137,36 @@ function PostCard() {
         >
           <CommentIcon />
           <Separator orientation="vertical" />
-          <span className="text-xs opacity-50">2 Comments</span>
+          <span className="text-xs opacity-70">2 Comments</span>
         </Button>
       </CardFooter>
 
       <Collapsible open={commmentSection}>
-        <CollapsibleContent className="p-6 flex flex-col gap-4">
-          <div className="flex gap-4">
-            <Avatar className="w-12 h-12">
-              <AvatarImage src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <div>
+        <CollapsibleContent>
+          <div className="p-6 flex flex-col gap-4 bg-slate-500/20">
+            <div className="grid gap-4">
+              <UserProfileLink
+                id="asd"
+                date={new Date()}
+                fullName="Ajmir Raziqi"
+                image="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+              />
               <p className="flex flex-col grow items-end opacity-80">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
                 ad in iusto quis ipsam quas aliquam eligendi, assumenda nemo
                 provident corrupti molestiae voluptatibus dolorum sapiente?
                 Possimus nesciunt eius veniam impedit?
               </p>
-              <i className="opacity-50">27 Dev, 2022</i>
             </div>
-          </div>
 
-          <div className="flex gap-4">
-            <Avatar className="w-12 h-12">
-              <AvatarImage src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
-            <div className="flex flex-col grow items-end">
+            <div className="flex items-start gap-2">
               <Textarea
-                placeholder="Write a comment…"
+                placeholder="Write a comment..."
                 className="w-full h-120"
               />
-              <div className="flex gap-2 mt-2 justify-between">
-                <Button variant={"secondary"}>Comment</Button>
-              </div>
+              <Button variant={"secondary"}>
+                <SendIcon />
+              </Button>
             </div>
           </div>
         </CollapsibleContent>
