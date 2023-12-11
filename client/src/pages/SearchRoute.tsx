@@ -1,16 +1,17 @@
 import { SearchIcon } from "@/components/Icons";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 export default function SearchRoute() {
   return (
     <div className="grid">
       <div className="p-2 md:p-4">
-        <div className="join shadow w-full">
-          <input className="input join-item grow" placeholder="Search" />
-          <button className="btn join-item">
-            <SearchIcon />
-            <span className="hidden md:block">Search</span>
-          </button>
-        </div>
+        <form className="flex w-full items-center space-x-2">
+          <Input type="email" placeholder="Search" />
+          <Button type="submit" className="gap-2">
+            <SearchIcon /> <span className="md:block hidden">Search</span>
+          </Button>
+        </form>
       </div>
 
       <div className="p-2 md:p-4 grid gap-2">

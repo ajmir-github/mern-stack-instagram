@@ -1,45 +1,49 @@
+import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
+
 function AddTextPost() {
   return (
-    <div className="grid gap-4">
-      <textarea
+    <div className="flex flex-col items-start gap-4">
+      <Textarea
         className="textarea textarea-bordered w-full h-auto textarea-lg"
         placeholder="Type here!"
-      ></textarea>
-      <button className="btn btn-primary w-full">Post</button>
+      ></Textarea>
+      <Button>Post</Button>
     </div>
   );
 }
 
 function AddImagePost() {
   return (
-    <div className="grid gap-4">
+    <div className="flex flex-col items-start gap-4">
       <input
         type="file"
         className="file-input file-input-bordered w-full"
         multiple
         accept="image/*"
       />
-      <textarea
+      <Textarea
         className="textarea textarea-bordered w-full h-auto textarea-lg"
         placeholder="Desription here!"
-      ></textarea>
-      <button className="btn btn-primary w-full">Upload and Post</button>
+      ></Textarea>
+      <Button>Upload and Post</Button>
     </div>
   );
 }
 function AddVideoPost() {
   return (
-    <div className="grid gap-4">
+    <div className="flex flex-col items-start gap-4">
       <input
         type="file"
         className="file-input file-input-bordered w-full"
         accept="video/*"
       />
-      <textarea
+      <Textarea
         className="textarea textarea-bordered w-full h-auto textarea-lg"
         placeholder="Desription here!"
-      ></textarea>
-      <button className="btn btn-primary w-full">Upload and Post</button>
+      ></Textarea>
+      <Button>Upload and Post</Button>
     </div>
   );
 }
@@ -47,50 +51,22 @@ function AddVideoPost() {
 export default function AddRoute() {
   return (
     <div className="p-2 md:p-4">
-      <div role="tablist" className="tabs tabs-lifted tabs-lg">
-        <input
-          type="radio"
-          name="my_tabs_2"
-          role="tab"
-          className="tab"
-          aria-label="Text"
-        />
-        <div
-          role="tabpanel"
-          className="tab-content  border-base-300 rounded-box p-4 md:p-8"
-        >
+      <Tabs defaultValue="account">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="post-tab">Post</TabsTrigger>
+          <TabsTrigger value="image-tab">Image/s</TabsTrigger>
+          <TabsTrigger value="video-tab">Video</TabsTrigger>
+        </TabsList>
+        <TabsContent value="post-tab">
           <AddTextPost />
-        </div>
-
-        <input
-          type="radio"
-          name="my_tabs_2"
-          role="tab"
-          className="tab"
-          aria-label="Image"
-          checked
-        />
-        <div
-          role="tabpanel"
-          className="tab-content  border-base-300 rounded-box p-4 md:p-8"
-        >
+        </TabsContent>
+        <TabsContent value="image-tab">
           <AddImagePost />
-        </div>
-
-        <input
-          type="radio"
-          name="my_tabs_2"
-          role="tab"
-          className="tab"
-          aria-label="Video"
-        />
-        <div
-          role="tabpanel"
-          className="tab-content  border-base-300 rounded-box p-4 md:p-8"
-        >
+        </TabsContent>
+        <TabsContent value="video-tab">
           <AddVideoPost />
-        </div>
-      </div>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }
