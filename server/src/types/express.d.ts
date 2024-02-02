@@ -17,8 +17,18 @@ export interface RequestValidBody<T = any> extends Express.Request {
   validBody: T;
 }
 
-export interface RequestAuth<Auth> extends Express.Request {
-  auth: Auth | null;
+export interface RequestCache<Agent = any, Subject = any>
+  extends Express.Request {
+  cache?:
+    | {
+        autheticated: false;
+        subject?: Subject;
+      }
+    | {
+        autheticated: true;
+        agent: Agent;
+        subject?: Subject;
+      };
 }
 
 export type Middleware<Request extends Express.Request = Express.Request> = (

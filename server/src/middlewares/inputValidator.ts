@@ -1,4 +1,4 @@
-import StatusCodes from "@/utils/StatusCodes";
+import StatusCodes from "@/utils/StatusCode";
 import { NextFunction, Request, Response } from "express";
 import { SafeParseReturnType } from "zod";
 

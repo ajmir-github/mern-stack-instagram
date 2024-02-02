@@ -14,7 +14,7 @@ const initialState: AuthState = {
 };
 
 export const authSlice = createSlice({
-  name: "ui",
+  name: "auth",
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {

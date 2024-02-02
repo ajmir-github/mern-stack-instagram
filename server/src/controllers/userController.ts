@@ -1,7 +1,7 @@
 import { UserModel } from "@/models";
 import * as encrypt from "@/utils/encrypt";
 import { Handler, RequestBody, RequestValidBody } from "@/types/express";
-import StatusCodes from "@/utils/StatusCodes";
+import StatusCodes from "@/utils/StatusCode";
 
 export const getSomeUsers: Handler = async (request, response) => {
   const users = await UserModel.find({}, "-password -__v");

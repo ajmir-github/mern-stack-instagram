@@ -5,7 +5,7 @@ import {
   RequestParams,
   RequestValidBody,
 } from "@/types/express";
-import StatusCodes from "@/utils/StatusCodes";
+import StatusCodes from "@/utils/StatusCode";
 import validateId from "@/utils/validateId";
 import { AnyZodObject, Schema, ZodError, z } from "zod";
 import * as encrypt from "@/utils/encrypt";
