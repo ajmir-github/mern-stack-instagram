@@ -1,3 +1,4 @@
+import { UserType } from "@/schema/userSchema";
 import { MongoClient } from "mongodb";
 
 const DATABASE_URL = process.env.MONGODB_URL;
@@ -8,5 +9,7 @@ if (!DATABASE_URL) throw new Error("Define DATABASE_URL in .env!");
 const client = new MongoClient(DATABASE_URL);
 
 export const database = client.db(BATABASE_NAME);
+
+export const UserCollection = database.collection<UserType>("User");
 
 export const connectToDatabase = client.connect();

@@ -3,9 +3,10 @@ import Express, { Request, Response, NextFunction, Router } from "express";
 import cors, { CorsOptions } from "cors";
 import path from "path";
 import { StatusCode } from "@/utils/handle";
-import logError from "./utils/logError";
+import logError from "@/utils/logError";
 
 // ------
+
 export default function createApp({
   corsOptions,
   router,

@@ -4,7 +4,7 @@ dotenv.config();
 // imports
 import { connectToDatabase } from "@/utils/MongoDB";
 import router from "@/routes";
-import createApp from "./app";
+import createApp from "@/app";
 
 // vars
 const PORT = process.env.PORT || "3000";
